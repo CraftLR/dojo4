@@ -81,6 +81,10 @@ Par exemple, pour une largeur = 3 et une hauteur = 2, le chiffre 2 sera :
  ___
 ```
 
-Ce kata est basé sur :
-<https://github.com/coreyhaines/kata-number-to-led>
-<http://rubyquiz.com/quiz14.html>
+Ce kata est basé sur
+
+- <https://codingdojo.org/kata/NumberToLCD/>
+
+- <https://github.com/coreyhaines/kata-number-to-led>
+
+- <http://rubyquiz.com/quiz14.html>
