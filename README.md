@@ -57,19 +57,18 @@ Pour en apprendre plus sur les tests en Rust, référez vous à la [documentatio
 Ecrivez un programme qui, étant donné un nombre (avec un nombre arbitraire de chiffres), le convertit en nombres de style LCD en utilisant le format suivant :
 
 ```
-   _  _     _  _  _  _  _
- | _| _||_||_ |_   ||_||_|
- ||_  _|  | _||_|  ||_| _|
+  _  _     _  _ _  _  _
+| _| _||_||_ |_  ||_||_|
+||_  _|  | _||_| ||_| _|
 ```
 
 (chaque chiffre a une hauteur de 3 lignes)
 
-Note : Ne lisez _PAS_ la deuxième partie avant d'avoir terminé la première. Un des objectifs de ce kata est de vous faire pratiquer le refactoring et l'adaptation aux changements d'exigences.
+**Note :** Ne lisez _PAS_ la deuxième partie avant d'avoir terminé la première. Un des objectifs de ce kata est de vous faire pratiquer le refactoring et l'adaptation aux changements d'exigences.
 
 ### Partie 2
 
-Modifiez votre programme pour qu'il prenne en charge la largeur ou la hauteur variable des chiffres.
-Par exemple, pour une largeur = 3 et une hauteur = 2, le chiffre 2 sera :
+Modifiez votre programme pour qu'il prenne en charge la largeur ou la hauteur variable des chiffres. Par exemple, pour une largeur = 3 et une hauteur = 2, le chiffre 2 sera :
 
 ```
  ___
