@@ -30,16 +30,18 @@
 
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-					"rust-lang.rust-analyzer",
-					"tamasfe.even-better-toml", // for Cargo.toml
-					"davidanson.vscode-markdownlint",
-					"ms-azuretools.vscode-docker", // Docker integration and linting
-					"shardulm94.trailing-spaces", // Show trailing spaces
-					"bierner.emojisense", // Emoji sense for markdown
-					"vscode-icons-team.vscode-icons", // Better file extension icons
-					"github.vscode-pull-request-github", // Github interaction
-					"IBM.output-colorizer" // Colorize your output/test logs
-				],
+				"rust-lang.rust-analyzer",
+				"tamasfe.even-better-toml",
+				"davidanson.vscode-markdownlint",
+				"ms-azuretools.vscode-docker",
+				"shardulm94.trailing-spaces",
+				"bierner.emojisense",
+				"vscode-icons-team.vscode-icons",
+				"github.vscode-pull-request-github",
+				"IBM.output-colorizer",
+				"serayuzgur.crates",
+				"usernamehw.errorlens"
+			],
 		  // Set *default* container specific settings.json values on container create.
 		  "settings": {
 			"terminal.integrated.profiles.linux": {
