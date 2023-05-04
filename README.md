@@ -1,5 +1,45 @@
 # Quatrième dojo (04/05/23) : kata LCD en Rust
 
+## Énoncé du problème
+
+**Objectif : écrire un programme qui affiche des nombres de type LCD.**
+
+### Partie 1
+
+Ecrivez un programme qui, étant donné un nombre (avec un nombre arbitraire de chiffres), le convertit en nombres de style LCD en utilisant le format suivant :
+
+```
+  _  _     _  _ _  _  _
+| _| _||_||_ |_  ||_||_|
+||_  _|  | _||_| ||_| _|
+```
+
+(chaque chiffre a une hauteur de 3 lignes)
+
+**Note :** Ne lisez _PAS_ la deuxième partie avant d'avoir terminé la première. Un des objectifs de ce kata est de vous faire pratiquer le refactoring et l'adaptation aux changements d'exigences.
+
+### Partie 2
+
+Modifiez votre programme pour qu'il prenne en charge la largeur ou la hauteur variable des chiffres. Par exemple, pour une largeur = 3 et une hauteur = 2, le chiffre 2 sera :
+
+```
+ ___
+    |
+    |
+ ___
+|
+|
+ ___
+```
+
+Ce kata est basé sur
+
+- <https://codingdojo.org/kata/NumberToLCD/>
+
+- <https://github.com/coreyhaines/kata-number-to-led>
+
+- <http://rubyquiz.com/quiz14.html>
+
 ## Ouvrir le code
 
 Ce dépôt contient la configuration nécessaire pour faire le kata directement dans un devcontainer. Le dossier peut être ouvert directement dans un VSCode avec l'extension `Dev Containers` installée.
@@ -47,43 +87,3 @@ cargo test always_fail -- --ignored
 Pour en apprendre plus sur les tests en Rust, référez vous à la [documentation des tests][rust-tests].
 
 [rust-tests]: https://doc.rust-lang.org/book/ch11-00-testing.html
-
-## Énoncé du problème
-
-**Objectif : écrire un programme qui affiche des nombres de type LCD.**
-
-### Partie 1
-
-Ecrivez un programme qui, étant donné un nombre (avec un nombre arbitraire de chiffres), le convertit en nombres de style LCD en utilisant le format suivant :
-
-```
-  _  _     _  _ _  _  _
-| _| _||_||_ |_  ||_||_|
-||_  _|  | _||_| ||_| _|
-```
-
-(chaque chiffre a une hauteur de 3 lignes)
-
-**Note :** Ne lisez _PAS_ la deuxième partie avant d'avoir terminé la première. Un des objectifs de ce kata est de vous faire pratiquer le refactoring et l'adaptation aux changements d'exigences.
-
-### Partie 2
-
-Modifiez votre programme pour qu'il prenne en charge la largeur ou la hauteur variable des chiffres. Par exemple, pour une largeur = 3 et une hauteur = 2, le chiffre 2 sera :
-
-```
- ___
-    |
-    |
- ___
-|
-|
- ___
-```
-
-Ce kata est basé sur
-
-- <https://codingdojo.org/kata/NumberToLCD/>
-
-- <https://github.com/coreyhaines/kata-number-to-led>
-
-- <http://rubyquiz.com/quiz14.html>
