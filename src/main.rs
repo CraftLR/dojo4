@@ -4,9 +4,9 @@ fn main() {
 }
 
 const ONE: &str = r#"
- 
-|
-|
+   
+  |
+  |
 "#;
 
 const TWO: &str = r#"
@@ -16,9 +16,51 @@ const TWO: &str = r#"
 "#;
 
 const THREE: &str = r#"
-_ 
-_|
-_|
+ _ 
+ _|
+ _|
+"#;
+
+const FOUR: &str = r#"
+   
+|_|
+  |
+"#;
+
+const FIVE: &str = r#"
+ _ 
+|_ 
+ _|
+"#;
+
+const SIX: &str = r#"
+ _ 
+|_ 
+|_|
+"#;
+
+const SEVEN: &str = r#"
+ _ 
+  |
+  |
+"#;
+
+const HEIGHT: &str = r#"
+ _ 
+|_|
+|_|
+"#;
+
+const NINE: &str = r#"
+ _ 
+|_|
+ _|
+"#;
+
+const ZERO: &str = r#"
+ _ 
+| |
+|_|
 "#;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -67,14 +109,29 @@ fn convert_to_digits(i: u128) -> Vec<Digit> {
 
 fn get_lcd(i: u128) -> String {
   let digits = convert_to_digits(i);
-  get_lcd_digit(digits[0])
+  let digits = digits.into_iter().map(|d| get_lcd_digit(d)).collect::<Vec<_>>();
+  let lines = digits.iter().map(|f| f.lines()).collect::<Vec<_>>();
+  let (line1, line2, line3) = digits.into_iter().fold((vec![], vec![], vec![]), |mut acc, f| {
+    acc.0.push(f.lines().skip(1).take(1).collect::<String>());
+    acc.1.push(f.lines().skip(2).take(1).collect::<String>());
+    acc.2.push(f.lines().skip(3).take(1).collect::<String>());
+    acc
+  });
+  format!("\n{}\n{}\n{}\n", line1.join(""), line2.join(""), line3.join(""))
 }
 
 fn get_lcd_digit(digit: Digit) -> String {
   match digit {
     _1 => ONE,
     _2 => TWO,
-    _ => THREE,
+    _3 => THREE,
+    _4 => FOUR,
+    _5 => FIVE,
+    _6 => SIX,
+    _7 => SEVEN,
+    _8 => HEIGHT,
+    _9 => NINE,
+    _0 => ZERO,
   }
   .to_string()
 }
@@ -83,19 +140,34 @@ fn get_lcd_digit(digit: Digit) -> String {
 #[cfg(test)]
 mod tests {
   use super::*;
+  use pretty_assertions::assert_eq;
+  use test_case::test_case;
   //use Digit::*;
 
-  #[test]
-  fn test_1() {
-    assert_eq!(get_lcd(1), ONE);
+  #[test_case(1, ONE)]
+  #[test_case(2, TWO)]
+  #[test_case(3, THREE)]
+  #[test_case(4, FOUR)]
+  #[test_case(5, FIVE)]
+  #[test_case(6, SIX)]
+  #[test_case(7, SEVEN)]
+  #[test_case(8, HEIGHT)]
+  #[test_case(9, NINE)]
+  #[test_case(0, ZERO)]
+  fn test(n: u128, expected: &str) {
+    assert_eq!(get_lcd(n), expected);
   }
+
   #[test]
-  fn test_2() {
-    assert_eq!(get_lcd(2), TWO);
-  }
-  #[test]
-  fn test_3() {
-    assert_eq!(get_lcd(3), THREE);
+  fn the_test() {
+    assert_eq!(
+      get_lcd(1234567890),
+      r#"
+    _  _     _  _  _  _  _  _ 
+  | _| _||_||_ |_   ||_||_|| |
+  ||_  _|  | _||_|  ||_| _||_|
+"#
+    );
   }
 
   #[test]
