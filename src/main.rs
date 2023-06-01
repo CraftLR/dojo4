@@ -108,7 +108,14 @@ fn convert_to_digits(i: u128) -> Vec<Digit> {
 }
 
 fn get_lcd(i: u128) -> String {
-  let lcds = convert_to_digits(i).into_iter().map(|d| get_lcd_digit(d)).collect::<Vec<_>>();
+  get_scaled_lcd(i, 1, 1)
+}
+
+fn get_scaled_lcd(i: u128, scale_w: u8, scale_h: u8) -> String {
+  let lcds = convert_to_digits(i)
+    .into_iter()
+    .map(|d| get_scaled_lcd_digit(d, scale_w, scale_h))
+    .collect::<Vec<_>>();
   let (line1, line2, line3) = lcds
     .iter()
     .map(|f| f.lines())
@@ -136,6 +143,21 @@ fn get_lcd_digit(digit: Digit) -> String {
     _0 => ZERO,
   }
   .to_string()
+}
+
+fn get_scaled_lcd_digit(digit: Digit, scale_w: u8, scale_h: u8) -> String {
+  let digit = get_lcd_digit(digit)
+    .lines()
+    .skip(1)
+    .take(3)
+    .map(|line| line.chars())
+    .map(|mut line| {
+      let (a, b, c) = (line.next().unwrap(), line.next().unwrap(), line.next().unwrap());
+      format!("{}{}{}", a, b.to_string().repeat(scale_w as usize), c)
+    })
+    .collect::<Vec<_>>()
+    .join("\n");
+  format!("\n{digit}\n")
 }
 
 // tests module
@@ -168,6 +190,22 @@ mod tests {
     _  _     _  _  _  _  _  _ 
   | _| _||_||_ |_   ||_||_|| |
   ||_  _|  | _||_|  ||_| _||_|
+"#
+    );
+  }
+
+  #[test]
+  fn the_scaled_test() {
+    assert_eq!(
+      get_scaled_lcd(2, 3, 2),
+      r#"
+ ___ 
+    |
+    |
+ ___ 
+|    
+|    
+ ___ 
 "#
     );
   }
