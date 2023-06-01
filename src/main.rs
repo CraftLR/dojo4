@@ -110,13 +110,16 @@ fn convert_to_digits(i: u128) -> Vec<Digit> {
 fn get_lcd(i: u128) -> String {
   let digits = convert_to_digits(i);
   let digits = digits.into_iter().map(|d| get_lcd_digit(d)).collect::<Vec<_>>();
-  let lines = digits.iter().map(|f| f.lines()).collect::<Vec<_>>();
-  let (line1, line2, line3) = digits.into_iter().fold((vec![], vec![], vec![]), |mut acc, f| {
-    acc.0.push(f.lines().skip(1).take(1).collect::<String>());
-    acc.1.push(f.lines().skip(2).take(1).collect::<String>());
-    acc.2.push(f.lines().skip(3).take(1).collect::<String>());
-    acc
-  });
+  let (line1, line2, line3) =
+    digits
+      .iter()
+      .map(|f| f.lines().skip(1))
+      .fold((vec![], vec![], vec![]), |(mut acc1, mut acc2, mut acc3), mut f| {
+        acc1.push(f.next().unwrap_or_default());
+        acc2.push(f.next().unwrap_or_default());
+        acc3.push(f.next().unwrap_or_default());
+        (acc1, acc2, acc3)
+      });
   format!("\n{}\n{}\n{}\n", line1.join(""), line2.join(""), line3.join(""))
 }
 
